@@ -3,10 +3,10 @@ Users domain entities.
 """
 
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
 from sqlalchemy import Boolean, DateTime, String, Text, Enum
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 import enum
 
 from app.shared.domain.base import TenantAwareEntity
@@ -50,10 +50,33 @@ class User(TenantAwareEntity):
     # Timestamps
     last_login_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
     
+    # Course relationships
+    instructor_courses: Mapped[List["CourseInstructor"]] = relationship(
+        "CourseInstructor",
+        back_populates="instructor",
+        cascade="all, delete-orphan"
+    )
+    student_enrollments: Mapped[List["CourseEnrollment"]] = relationship(
+        "CourseEnrollment",
+        back_populates="student",
+        cascade="all, delete-orphan"
+    )
+    
     @property
     def full_name(self) -> str:
         """Get user's full name."""
         return f"{self.first_name} {self.last_name}"
+    
+    @property
+    def active_instructor_courses(self) -> List["CourseInstructor"]:
+        """Get active course instructor assignments."""
+        return [ci for ci in self.instructor_courses if ci.is_active]
+    
+    @property
+    def active_student_enrollments(self) -> List["CourseEnrollment"]:
+        """Get active student enrollments."""
+        from app.courses.domain.entities import EnrollmentStatus
+        return [ce for ce in self.student_enrollments if ce.status == EnrollmentStatus.ACTIVE]
     
     def __repr__(self) -> str:
         return f"<User(id={self.id}, email={self.email}, role={self.role})>"

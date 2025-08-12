@@ -77,7 +77,7 @@ async def health_check():
 # Include routers
 app.include_router(tenancy_router, prefix="/api/v1/tenancy", tags=["tenancy"])
 app.include_router(users_router, prefix="/api/v1/users", tags=["users"])
-app.include_router(courses_router, prefix="/api/v1/courses", tags=["courses"])
+app.include_router(courses_router, prefix="/api/v1", tags=["courses"])  # Courses router includes /courses prefix
 app.include_router(questionnaires_router, prefix="/api/v1/questionnaires", tags=["questionnaires"])
 app.include_router(team_formation_router, prefix="/api/v1/teams", tags=["team-formation"])
 app.include_router(analytics_router, prefix="/api/v1/analytics", tags=["analytics"])

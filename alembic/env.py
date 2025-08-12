@@ -16,6 +16,7 @@ from alembic import context
 from app.shared.infrastructure.database import Base
 from app.tenancy.domain.entities import *  # noqa
 from app.users.domain.entities import *  # noqa
+from app.courses.domain.entities import *  # noqa
 # Import other domain entities as they're created
 
 # this is the Alembic Config object, which provides
