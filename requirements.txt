@@ -1,0 +1,69 @@
+# FastAPI and Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Database
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.13.1
+
+# Authentication and Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+cryptography==41.0.8
+
+# Caching and Session Management
+redis==5.0.1
+python-redis-lock==4.0.0
+
+# Background Tasks
+celery==5.3.4
+flower==2.0.1
+
+# HTTP Client
+httpx==0.25.2
+aiofiles==23.2.1
+
+# Data Processing and ML
+pandas==2.1.4
+numpy==1.25.2
+scikit-learn==1.3.2
+scipy==1.11.4
+
+# Utilities
+python-dotenv==1.0.0
+email-validator==2.1.0
+pytz==2023.3
+python-dateutil==2.8.2
+
+# Logging and Monitoring
+structlog==23.2.0
+rich==13.7.0
+
+# File Processing
+openpyxl==3.1.2
+xlsxwriter==3.1.9
+
+# API Documentation
+python-openapi-schema==0.3.0
+
+# Testing (Dev Dependencies)
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+httpx==0.25.2
+factory-boy==3.3.0
+faker==20.1.0
+
+# Development Tools
+black==23.11.0
+isort==5.12.0
+flake8==6.1.0
+mypy==1.7.1
+pre-commit==3.6.0
+
+# Production
+gunicorn==21.2.0
